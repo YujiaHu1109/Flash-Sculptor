@@ -174,21 +174,21 @@ def calculate_centroid_relative(bbox):
 
     return centroid_x/1024, centroid_y/1024, centroid_x.item(), centroid_y.item()
 
-def calculate_depth(x_cord, y_cord, depth_file):
-    assert mask.dim() == 3 and mask.size(0) == 1
-    depth_npy = np.load(depth_file)  
+# def calculate_depth(x_cord, y_cord, depth_file):
+#     assert mask.dim() == 3 and mask.size(0) == 1
+#     depth_npy = np.load(depth_file)  
 
-    x = np.arange(depth_npy.shape[1]) 
-    y = np.arange(depth_npy.shape[0])  
+#     x = np.arange(depth_npy.shape[1]) 
+#     y = np.arange(depth_npy.shape[0])  
 
-    if depth_npy.size > 0:
-        interp_func = interp2d(x, y, depth_npy, kind='linear')
-        value = interp_func(x_cord, y_cord)[0]
-        return value
-        # average_depth = masked_depth.mean()
-        # return average_depth
-    else:
-        print("No mask applied, or empty masked region.")
+#     if depth_npy.size > 0:
+#         interp_func = interp2d(x, y, depth_npy, kind='linear')
+#         value = interp_func(x_cord, y_cord)[0]
+#         return value
+#         # average_depth = masked_depth.mean()
+#         # return average_depth
+#     else:
+#         print("No mask applied, or empty masked region.")
 
 def extract_filename(image_path):
     filename_with_ext = image_path.split('/')[-1]  
@@ -452,13 +452,13 @@ if __name__ == "__main__":
         # print(mask.shape)
         centroid = calculate_centroid_relative(boxes_final[i])
 
-        npy_path = os.path.join("results", task_name, "depth/2DImage_pred.npy")
+        # npy_path = os.path.join("results", task_name, "depth/2DImage_pred.npy")
 
-        print(calculate_depth(100, 1000, npy_path))
-        center_depth = calculate_depth(centroid[2], centroid[3], npy_path)
+        # print(calculate_depth(100, 1000, npy_path))
+        # center_depth = calculate_depth(centroid[2], centroid[3], npy_path)
         translation[i][0] = centroid[0]
         translation[i][1] = centroid[1]
-        translation[i][2] = center_depth
+        translation[i][2] = 0
     np.save(os.path.join(output_dir, f"translation_{extract_filename(image_path)}.npy"), translation)
 
         
