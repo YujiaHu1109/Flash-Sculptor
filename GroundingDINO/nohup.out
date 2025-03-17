@@ -1,0 +1,220 @@
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... unsuccessful initial attempt using frozen solve. Retrying with flexible solve.
+Solving environment: ...working... unsuccessful attempt using repodata from current_repodata.json, retrying with next repodata source.
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+
+
+==> WARNING: A newer version of conda exists. <==
+  current version: 23.5.2
+  latest version: 24.7.1
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+Or to minimize the number of packages updated during conda update use
+
+     conda install conda=24.7.1
+
+
+
+## Package Plan ##
+
+  environment location: /home/huyujia/.conda/envs/3DRN
+
+  added / updated specs:
+    - pytorch
+    - pytorch-cuda=12.1
+    - torchaudio
+    - torchvision
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    pytorch-2.4.1              |py3.9_cuda12.1_cudnn9.1.0_0        1.35 GB  pytorch
+    torchtriton-3.0.0          |             py39       233.5 MB  pytorch
+    ------------------------------------------------------------
+                                           Total:        1.58 GB
+
+The following NEW packages will be INSTALLED:
+
+  blas               pkgs/main/linux-64::blas-1.0-mkl 
+  brotli-python      pkgs/main/linux-64::brotli-python-1.0.9-py39h6a678d5_8 
+  bzip2              pkgs/main/linux-64::bzip2-1.0.8-h5eee18b_6 
+  certifi            pkgs/main/linux-64::certifi-2024.8.30-py39h06a4308_0 
+  charset-normalizer pkgs/main/noarch::charset-normalizer-3.3.2-pyhd3eb1b0_0 
+  cuda-cudart        nvidia/linux-64::cuda-cudart-12.1.105-0 
+  cuda-cupti         nvidia/linux-64::cuda-cupti-12.1.105-0 
+  cuda-libraries     nvidia/linux-64::cuda-libraries-12.1.0-0 
+  cuda-nvrtc         nvidia/linux-64::cuda-nvrtc-12.1.105-0 
+  cuda-nvtx          nvidia/linux-64::cuda-nvtx-12.1.105-0 
+  cuda-opencl        nvidia/linux-64::cuda-opencl-12.6.68-0 
+  cuda-runtime       nvidia/linux-64::cuda-runtime-12.1.0-0 
+  cuda-version       nvidia/noarch::cuda-version-12.6-3 
+  ffmpeg             pytorch/linux-64::ffmpeg-4.3-hf484d3e_0 
+  filelock           pkgs/main/linux-64::filelock-3.13.1-py39h06a4308_0 
+  freetype           pkgs/main/linux-64::freetype-2.12.1-h4a9f257_0 
+  gmp                pkgs/main/linux-64::gmp-6.2.1-h295c915_3 
+  gmpy2              pkgs/main/linux-64::gmpy2-2.1.2-py39heeb90bb_0 
+  gnutls             pkgs/main/linux-64::gnutls-3.6.15-he1e5248_0 
+  idna               pkgs/main/linux-64::idna-3.7-py39h06a4308_0 
+  intel-openmp       pkgs/main/linux-64::intel-openmp-2023.1.0-hdb19cb5_46306 
+  jinja2             pkgs/main/linux-64::jinja2-3.1.4-py39h06a4308_0 
+  jpeg               pkgs/main/linux-64::jpeg-9e-h5eee18b_3 
+  lame               pkgs/main/linux-64::lame-3.100-h7b6447c_0 
+  lcms2              pkgs/main/linux-64::lcms2-2.12-h3be6417_0 
+  lerc               pkgs/main/linux-64::lerc-3.0-h295c915_0 
+  libcublas          nvidia/linux-64::libcublas-12.1.0.26-0 
+  libcufft           nvidia/linux-64::libcufft-11.0.2.4-0 
+  libcufile          nvidia/linux-64::libcufile-1.11.1.6-0 
+  libcurand          nvidia/linux-64::libcurand-10.3.7.68-0 
+  libcusolver        nvidia/linux-64::libcusolver-11.4.4.55-0 
+  libcusparse        nvidia/linux-64::libcusparse-12.0.2.55-0 
+  libdeflate         pkgs/main/linux-64::libdeflate-1.17-h5eee18b_1 
+  libiconv           pkgs/main/linux-64::libiconv-1.16-h5eee18b_3 
+  libidn2            pkgs/main/linux-64::libidn2-2.3.4-h5eee18b_0 
+  libjpeg-turbo      pytorch/linux-64::libjpeg-turbo-2.0.0-h9bf148f_0 
+  libnpp             nvidia/linux-64::libnpp-12.0.2.50-0 
+  libnvjitlink       nvidia/linux-64::libnvjitlink-12.1.105-0 
+  libnvjpeg          nvidia/linux-64::libnvjpeg-12.1.1.14-0 
+  libpng             pkgs/main/linux-64::libpng-1.6.39-h5eee18b_0 
+  libtasn1           pkgs/main/linux-64::libtasn1-4.19.0-h5eee18b_0 
+  libtiff            pkgs/main/linux-64::libtiff-4.5.1-h6a678d5_0 
+  libunistring       pkgs/main/linux-64::libunistring-0.9.10-h27cfd23_0 
+  libwebp-base       pkgs/main/linux-64::libwebp-base-1.3.2-h5eee18b_0 
+  llvm-openmp        pkgs/main/linux-64::llvm-openmp-14.0.6-h9e868ea_0 
+  lz4-c              pkgs/main/linux-64::lz4-c-1.9.4-h6a678d5_1 
+  markupsafe         pkgs/main/linux-64::markupsafe-2.1.3-py39h5eee18b_0 
+  mkl                pkgs/main/linux-64::mkl-2023.1.0-h213fc3f_46344 
+  mkl-service        pkgs/main/linux-64::mkl-service-2.4.0-py39h5eee18b_1 
+  mkl_fft            pkgs/main/linux-64::mkl_fft-1.3.10-py39h5eee18b_0 
+  mkl_random         pkgs/main/linux-64::mkl_random-1.2.7-py39h1128e8f_0 
+  mpc                pkgs/main/linux-64::mpc-1.1.0-h10f8cd9_1 
+  mpfr               pkgs/main/linux-64::mpfr-4.0.2-hb69a4c5_1 
+  mpmath             pkgs/main/linux-64::mpmath-1.3.0-py39h06a4308_0 
+  nettle             pkgs/main/linux-64::nettle-3.7.3-hbbd107a_1 
+  networkx           pkgs/main/linux-64::networkx-3.2.1-py39h06a4308_0 
+  numpy              pkgs/main/linux-64::numpy-2.0.1-py39h5f9d8c6_1 
+  numpy-base         pkgs/main/linux-64::numpy-base-2.0.1-py39hb5e798b_1 
+  openh264           pkgs/main/linux-64::openh264-2.1.1-h4ff587b_0 
+  openjpeg           pkgs/main/linux-64::openjpeg-2.5.2-he7f1fd0_0 
+  pillow             pkgs/main/linux-64::pillow-10.4.0-py39h5eee18b_0 
+  pysocks            pkgs/main/linux-64::pysocks-1.7.1-py39h06a4308_0 
+  pytorch            pytorch/linux-64::pytorch-2.4.1-py3.9_cuda12.1_cudnn9.1.0_0 
+  pytorch-cuda       pytorch/linux-64::pytorch-cuda-12.1-ha16c6d3_5 
+  pytorch-mutex      pytorch/noarch::pytorch-mutex-1.0-cuda 
+  pyyaml             pkgs/main/linux-64::pyyaml-6.0.1-py39h5eee18b_0 
+  requests           pkgs/main/linux-64::requests-2.32.3-py39h06a4308_0 
+  sympy              pkgs/main/linux-64::sympy-1.13.2-py39h06a4308_0 
+  tbb                pkgs/main/linux-64::tbb-2021.8.0-hdb19cb5_0 
+  torchaudio         pytorch/linux-64::torchaudio-2.4.1-py39_cu121 
+  torchtriton        pytorch/linux-64::torchtriton-3.0.0-py39 
+  torchvision        pytorch/linux-64::torchvision-0.19.1-py39_cu121 
+  typing_extensions  pkgs/main/linux-64::typing_extensions-4.11.0-py39h06a4308_0 
+  urllib3            pkgs/main/linux-64::urllib3-2.2.2-py39h06a4308_0 
+  yaml               pkgs/main/linux-64::yaml-0.2.5-h7b6447c_0 
+  zstd               pkgs/main/linux-64::zstd-1.5.5-hc292b87_2 
+
+The following packages will be UPDATED:
+
+  openssl                                 3.0.14-h5eee18b_0 --> 3.0.15-h5eee18b_0 
+
+
+Proceed ([y]/n)? 
+# >>>>>>>>>>>>>>>>>>>>>> ERROR REPORT <<<<<<<<<<<<<<<<<<<<<<
+
+    Traceback (most recent call last):
+      File "/local_home/envs/miniconda3/lib/python3.11/site-packages/conda/exception_handler.py", line 16, in __call__
+        return func(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^
+      File "/local_home/envs/miniconda3/lib/python3.11/site-packages/conda/cli/main.py", line 84, in main_subshell
+        exit_code = do_call(args, p)
+                    ^^^^^^^^^^^^^^^^
+      File "/local_home/envs/miniconda3/lib/python3.11/site-packages/conda/cli/conda_argparse.py", line 126, in do_call
+        return getattr(module, func_name)(args, parser)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/local_home/envs/miniconda3/lib/python3.11/site-packages/conda/notices/core.py", line 123, in wrapper
+        return func(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^
+      File "/local_home/envs/miniconda3/lib/python3.11/site-packages/conda/cli/main_install.py", line 22, in execute
+        install(args, parser, "install")
+      File "/local_home/envs/miniconda3/lib/python3.11/site-packages/conda/cli/install.py", line 387, in install
+        handle_txn(unlink_link_transaction, prefix, args, newenv)
+      File "/local_home/envs/miniconda3/lib/python3.11/site-packages/conda/cli/install.py", line 406, in handle_txn
+        common.confirm_yn()
+      File "/local_home/envs/miniconda3/lib/python3.11/site-packages/conda/cli/common.py", line 57, in confirm_yn
+        choice = confirm(
+                 ^^^^^^^^
+      File "/local_home/envs/miniconda3/lib/python3.11/site-packages/conda/cli/common.py", line 40, in confirm
+        user_choice = sys.stdin.readline().strip().lower()
+                      ^^^^^^^^^^^^^^^^^^^^
+    OSError: [Errno 9] Bad file descriptor
+
+`$ /local_home/envs/miniconda3/condabin/conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia`
+
+  environment variables:
+                 CIO_TEST=<not set>
+        CONDA_DEFAULT_ENV=3DRN
+                CONDA_EXE=/local_home/envs/miniconda3/bin/conda
+             CONDA_PREFIX=/home/huyujia/.conda/envs/3DRN
+           CONDA_PREFIX_1=/local_home/envs/miniconda3
+    CONDA_PROMPT_MODIFIER=(3DRN)
+         CONDA_PYTHON_EXE=/local_home/envs/miniconda3/bin/python
+               CONDA_ROOT=/local_home/envs/miniconda3
+              CONDA_SHLVL=2
+       CPLUS_INCLUDE_PATH=://home/huyujia/.conda/envs/REPARO/include
+           CURL_CA_BUNDLE=<not set>
+           C_INCLUDE_PATH=:/home/huyujia/.conda/envs/REPARO/include
+          LD_LIBRARY_PATH=:/home/huyujia/.conda/envs/REPARO/lib
+               LD_PRELOAD=<not set>
+             LIBRARY_PATH=:/home/huyujia/.conda/envs/REPARO/lib
+                     PATH=/home/huyujia/.conda/envs/3DRN/bin:/local_home/envs/miniconda3/condabi
+                          n:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/ga
+                          mes:/usr/local/games:/snap/bin
+       REQUESTS_CA_BUNDLE=<not set>
+            SSL_CERT_FILE=<not set>
+
+     active environment : 3DRN
+    active env location : /home/huyujia/.conda/envs/3DRN
+            shell level : 2
+       user config file : /home/huyujia/.condarc
+ populated config files : /home/huyujia/.condarc
+          conda version : 23.5.2
+    conda-build version : not installed
+         python version : 3.11.4.final.0
+       virtual packages : __archspec=1=x86_64
+                          __cuda=12.2=0
+                          __glibc=2.31=0
+                          __linux=5.15.0=0
+                          __unix=0=0
+       base environment : /local_home/envs/miniconda3  (read only)
+      conda av data dir : /local_home/envs/miniconda3/etc/conda
+  conda av metadata url : None
+           channel URLs : https://conda.anaconda.org/pytorch/linux-64
+                          https://conda.anaconda.org/pytorch/noarch
+                          https://conda.anaconda.org/nvidia/linux-64
+                          https://conda.anaconda.org/nvidia/noarch
+                          https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/linux-64
+                          https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/noarch
+                          https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch3d/linux-64
+                          https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch3d/noarch
+                          https://repo.anaconda.com/pkgs/main/linux-64
+                          https://repo.anaconda.com/pkgs/main/noarch
+                          https://repo.anaconda.com/pkgs/r/linux-64
+                          https://repo.anaconda.com/pkgs/r/noarch
+          package cache : /local_home/envs/miniconda3/pkgs
+                          /home/huyujia/.conda/pkgs
+       envs directories : /home/huyujia/.conda/envs
+                          /local_home/envs/miniconda3/envs
+               platform : linux-64
+             user-agent : conda/23.5.2 requests/2.29.0 CPython/3.11.4 Linux/5.15.0-79-generic ubuntu/20.04.6 glibc/2.31
+                UID:GID : 1043:1043
+             netrc file : None
+           offline mode : False
+
+
+An unexpected error has occurred. Conda has prepared the above report.
+
