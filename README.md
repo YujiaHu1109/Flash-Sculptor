@@ -1,0 +1,85 @@
+# Flash Sculptor: Modular 3D Worlds from Images
+
+> **Flash Sculptor: Modular 3D Worlds from Images**<br/>Yujia Hu, Songhua Liu, Xingyi Yang, Xinchao Wang
+> <br/>
+
+![Pipeline](./teaser.jpg)
+
+## 💻 Requirements
+- Ubuntu 20.04
+- CUDA 12.2
+- Python 3.10.12
+- Pytorch 2.4.0
+
+## 🔧 Installation
+For complete installation instructions, please see [INSTALL.md](INSTALL.md).
+
+## 🔦 Run
+Follow these steps to get a composite 3D scene from a single image:
+
+**0.Prepare an image**
+
+Obtain an image  using the following command.
+
+```bash
+python t2i.py --task_name [task_name] --prompt [prompt]
+```
+Or you can simply put your own 2D image as ```results/[task_name]/2DImage.png```.
+
+**1.Segment the image**
+
+Run the following command to segment the image and obtain the bounding box, mask and lable of each object.
+
+```bash
+python segment.py   --config GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py   --ram_checkpoint ram_swin_large_14m.pth   --ram_plus_checkpoint ram_plus_swin_large_14m.pth   --grounded_checkpoint groundingdino_swint_ogc.pth   --sam_checkpoint sam_vit_h_4b8939.pth   --sam_hq_checkpoint sam_hq_vit_h.pth   --box_threshold 0.25   --text_threshold 0.2   --iou_threshold 0.5   --device "cuda" --task_name [task_name]
+```
+
+**2.Reconstruct the background scene**
+
+We first recover the background by running:
+
+```bash
+python background_recover.py --task_name [task_name] --dilate_kernel_size 15 ./pretrained_models/sam_vit_h_4b8939.pth  --lama_config ./lama/configs/prediction/default.yaml
+ --lama_ckpt ./pretrained_models/big-lama
+```
+
+Then we reconstruct the 3D scene of it using:
+
+```bash
+cd VistaDream
+python vistadream.py
+```
+
+**3.Depth estimation**
+
+```bash
+cd ml-depth-pro
+python run.py	--task_name [task_name]
+```
+
+**4.Reconstruct single objects**
+
+We first inpaint the objects by:
+
+```bash
+python occlusion.py	--task_name [task_name]
+python inpaint.py	--task_name [task_name]
+```
+
+**5.Combine the objects**
+
+```bash
+python combine_objects.py	--task_name [task_name]
+```
+
+**6.Combine with the background**
+
+```bash
+python combine_scene.py	--task_name [task_name]
+```
+
+## 🔦 ToDo List
+- [ ] Release on arXiv.
+- [ ] Improve README and files.
+- [ ] Interactive demos.
+
