@@ -6,15 +6,18 @@
 ![Pipeline](./teaser.jpg)
 
 ## 💻 Requirements
+
 - Ubuntu 20.04
 - CUDA 12.2
 - Python 3.10.12
 - Pytorch 2.4.0
 
 ## 🔧 Installation
+
 For complete installation instructions, please see [INSTALL.md](INSTALL.md).
 
 ## 🔦 Run
+
 Follow these steps to get a composite 3D scene from a single image:
 
 **0.Prepare an image**
@@ -24,6 +27,7 @@ Obtain an image  using the following command.
 ```bash
 python t2i.py --task_name [task_name] --prompt [prompt]
 ```
+
 Or you can simply put your own 2D image as ```results/[task_name]/2DImage.png```.
 
 **1.Segment the image**
@@ -66,7 +70,28 @@ python occlusion.py	--task_name [task_name]
 python inpaint.py	--task_name [task_name]
 ```
 
+Then we reconstruct the 3D point cloud of each object by:
+
+```bash
+cd TRELLIS
+python trellis.py --task_name [task_name]
+```
+
 **5.Combine the objects**
+
+We first determine the rotation by:
+
+```bash
+python rotation.py	--task_name [task_name]
+```
+
+Then we select points for depth alignment:
+
+```bash
+python select_points.py	--task_name [task_name]
+```
+
+Finally, we combine the objects together.
 
 ```bash
 python combine_objects.py	--task_name [task_name]
@@ -79,7 +104,18 @@ python combine_scene.py	--task_name [task_name]
 ```
 
 ## 🔦 ToDo List
+
 - [ ] Release on arXiv.
 - [ ] Improve README and files.
 - [ ] Interactive demos.
 
+## 🔗 Related Projects
+
+We thank the excellent open-source projects:
+
+- [Grounded-Segment-Anything](https://github.com/IDEA-Research/Grounded-Segment-Anything.git) for the exceptional automatic segmentation performance;
+- [Inpaint-Anything](https://github.com/geekyutao/Inpaint-Anything.git) for the wonderful image inpainting performance;
+- [VistaDream](https://github.com/WHU-USI3DV/VistaDream.git) for the efficient and fast 3D scene generation;
+- [Depth-Pro](https://github.com/apple/ml-depth-pro) for accurate monocular depth estimation;
+- [TRELLIS](https://github.com/microsoft/TRELLIS.git) for the high-fidelity and fast single-object 3D generation;
+- [StableDiffusion](https://github.com/CompVis/stable-diffusion) for its powerful image generation and inpainting capabilities.
