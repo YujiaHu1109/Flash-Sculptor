@@ -291,7 +291,7 @@ def main(args):
     #########################################################
     # 0. obtain the points of input view of the bg 3D model #
     #########################################################
-    gaussian_ids = np.load(f"mask_{args.task_name}.npy")
+    gaussian_ids = np.load(f"./results/{args.task_name}/visible_points.npy")
     print(gaussian_ids.shape)
 
     visible_points = extract_points_by_ids(target_ply, gaussian_ids)
