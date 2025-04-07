@@ -1,0 +1,4 @@
+# ninja log v5
+3	10340	1732671845700354703	/home/huyujia/Grounded-Segment-Anything/VistaDream/tools/OneFormer/oneformer/modeling/pixel_decoder/ops/build/temp.linux-x86_64-cpython-38/home/huyujia/Grounded-Segment-Anything/VistaDream/tools/OneFormer/oneformer/modeling/pixel_decoder/ops/src/cpu/ms_deform_attn_cpu.o	365758bb3ac6b643
+3	32885	1732671868468354571	/home/huyujia/Grounded-Segment-Anything/VistaDream/tools/OneFormer/oneformer/modeling/pixel_decoder/ops/build/temp.linux-x86_64-cpython-38/home/huyujia/Grounded-Segment-Anything/VistaDream/tools/OneFormer/oneformer/modeling/pixel_decoder/ops/src/cuda/ms_deform_attn_cuda.o	8f92631068670975
+4	36526	1732671872216354549	/home/huyujia/Grounded-Segment-Anything/VistaDream/tools/OneFormer/oneformer/modeling/pixel_decoder/ops/build/temp.linux-x86_64-cpython-38/home/huyujia/Grounded-Segment-Anything/VistaDream/tools/OneFormer/oneformer/modeling/pixel_decoder/ops/src/vision.o	38de1ee99fcb38d5
