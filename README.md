@@ -37,7 +37,7 @@ python background_recover.py --task_name [task_name] --dilate_kernel_size 15  --
 Then, reconstruct the 3D scene of it using:
 ```bash
 cd VistaDream
-python vistadream.py
+python vistadream.py --task_name [task_name]
 ```
 
 ### 3. Depth estimation
