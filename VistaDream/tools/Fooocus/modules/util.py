@@ -1,5 +1,4 @@
 from pathlib import Path
-from typing import Union
 
 import numpy as np
 import datetime
@@ -364,7 +363,7 @@ def is_json(data: str) -> bool:
     return True
 
 
-def get_filname_by_stem(lora_name, filenames: List[str]) -> Union[str, None]:
+def get_filname_by_stem(lora_name, filenames: List[str]) -> str | None:
     for filename in filenames:
         path = Path(filename)
         if lora_name == path.stem:
@@ -397,7 +396,7 @@ def get_enabled_loras(loras: list, remove_none=True) -> list:
 
 def parse_lora_references_from_prompt(prompt: str, loras: List[Tuple[AnyStr, float]], loras_limit: int = 5,
                                       skip_file_check=False, prompt_cleanup=True, deduplicate_loras=True,
-                                      lora_filenames=None) -> Tuple[List[Tuple[AnyStr, float]], str]:
+                                      lora_filenames=None) -> tuple[List[Tuple[AnyStr, float]], str]:
     if lora_filenames is None:
         lora_filenames = []
 
@@ -444,7 +443,7 @@ def parse_lora_references_from_prompt(prompt: str, loras: List[Tuple[AnyStr, flo
     return updated_loras[:loras_limit], cleaned_prompt
 
 
-def remove_performance_lora(filenames: list, performance: Union[Performance, None]):
+def remove_performance_lora(filenames: list, performance: Performance | None):
     loras_without_performance = filenames.copy()
 
     if performance is None:

@@ -11,7 +11,6 @@ import modules.sdxl_styles
 from modules.model_loader import load_file_from_url
 from modules.extra_utils import makedirs_with_log, get_files_from_folder, try_eval_env_var
 from modules.flags import OutputFormat, Performance, MetadataScheme
-from typing import Union
 
 
 def get_config_path(key, default_value):
@@ -197,8 +196,9 @@ path_inpaint = get_dir_or_set_default('path_inpaint', '../models/inpaint/')
 path_controlnet = get_dir_or_set_default('path_controlnet', '../models/controlnet/')
 path_clip_vision = get_dir_or_set_default('path_clip_vision', '../models/clip_vision/')
 path_fooocus_expansion = get_dir_or_set_default('path_fooocus_expansion', '../models/prompt_expansion/fooocus_expansion')
-path_wildcards = get_dir_or_set_default('path_wildcards', '../wildcards/')
 path_safety_checker = get_dir_or_set_default('path_safety_checker', '../models/safety_checker/')
+
+path_wildcards = get_dir_or_set_default('path_wildcards', '../wildcards/')
 path_outputs = get_path_output()
 
 
@@ -231,7 +231,7 @@ def get_config_item_or_set_default(key, default_value, validator, disable_empty_
         return default_value
 
 
-def init_temp_path(path: Union[str, None], default_path: str) -> str:
+def init_temp_path(path: str | None, default_path: str) -> str:
     if args_manager.args.temp_path:
         path = args_manager.args.temp_path
 

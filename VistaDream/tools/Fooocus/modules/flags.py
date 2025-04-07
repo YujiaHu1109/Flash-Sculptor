@@ -1,5 +1,4 @@
 from enum import IntEnum, Enum
-from typing import Union
 
 disabled = 'Disabled'
 enabled = 'Enabled'
@@ -45,8 +44,7 @@ SAMPLER_EXTRA = {
     "uni_pc_bh2": ""
 }
 
-# SAMPLERS = KSAMPLER | SAMPLER_EXTRA
-SAMPLERS = {**KSAMPLER, **SAMPLER_EXTRA}
+SAMPLERS = KSAMPLER | SAMPLER_EXTRA
 
 KSAMPLER_NAMES = list(KSAMPLER.keys())
 
@@ -154,7 +152,7 @@ class Performance(Enum):
         return list(map(lambda c: c.value, cls))
 
     @classmethod
-    def by_steps(cls, steps: Union[int, str]):
+    def by_steps(cls, steps: int | str):
         return cls[Steps(int(steps)).name]
 
     @classmethod
@@ -163,11 +161,11 @@ class Performance(Enum):
             x = x.value
         return x in [cls.EXTREME_SPEED.value, cls.LIGHTNING.value, cls.HYPER_SD.value]
 
-    def steps(self) -> Union[int, None]:
+    def steps(self) -> int | None:
         return Steps[self.name].value if self.name in Steps.__members__ else None
 
-    def steps_uov(self) -> Union[int, None]:
+    def steps_uov(self) -> int | None:
         return StepsUOV[self.name].value if self.name in StepsUOV.__members__ else None
 
-    def lora_filename(self) -> Union[str, None]:
+    def lora_filename(self) -> str | None:
         return PerformanceLoRA[self.name].value if self.name in PerformanceLoRA.__members__ else None

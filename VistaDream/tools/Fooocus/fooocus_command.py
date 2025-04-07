@@ -19,14 +19,12 @@ class Fooocus():
         if seed_random:
             self.image_seed = random.randint(constants.MIN_SEED, constants.MAX_SEED)
         else:
-            try:
-                seed_value = int(seed)
-                if constants.MIN_SEED <= seed_value <= constants.MAX_SEED:
-                    self.image_seed = seed_value
-            except ValueError:
-                pass
-            self.image_seed = random.randint(constants.MIN_SEED, constants.MAX_SEED)
-
+            seed_value = int(seed)
+            if constants.MIN_SEED <= seed_value <= constants.MAX_SEED:
+                self.image_seed = seed_value
+            else:
+                self.image_seed = random.randint(constants.MIN_SEED, constants.MAX_SEED)
+        
     def _preset_parameters(self):
         '''
         We keep the default parameters of Fooocus unchanged!
@@ -209,7 +207,6 @@ class Fooocus():
         inpaint_input_image = {'image':inpaint_input_image,
                                'mask':inpaint_mask_image}
         inpaint_mask_image = None
-
         ctrls = [currentTask, self.generate_image_grid]
         ctrls += [
             prompt, negative_prompt, self.style_selections,
@@ -326,6 +323,7 @@ class Fooocus():
         if seed is None: self._seed_set()
         else: self._seed_set(seed,seed_random=False)
         self.image_number=image_number
+        print(self.image_seed)
         # conduct inpainting
         self._inpaint_parameters(outpaint_selections=outpaint_selections,
                                  outpaint_extend_times=outpaint_extend_times,
