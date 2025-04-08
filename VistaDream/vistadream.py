@@ -1,3 +1,6 @@
+import sys
+sys.argv = [sys.argv[0]]
+
 import argparse
 import torch
 import os
@@ -5,7 +8,6 @@ from pipe.cfgs import load_cfg
 from pipe.c2f_recons import Pipeline
 from ops.visual_check import Check
 from ops.utils import save_ply
-import argparse
 import numpy as np
 from plyfile import PlyData
     
@@ -18,20 +20,20 @@ def read_ply(filename):
     return PlyData.read(filename)
 
 def main():
-    parser = argparse.ArgumentParser(description="3D bg reconstruction.")
-    parser.add_argument("--task_name", type=str, required=True, help="Task name.")
+    parser = argparse.ArgumentParser(description="Mask generation.")
+    parser.add_argument('--task_name', type=str, required=True, help='task name') 
     args = parser.parse_args()
-
+    print(f"Task: {args.task_name}")
     cfg = load_cfg(f'pipe/cfgs/basic.yaml')
     cfg.scene.input.rgb = f'../results/{args.task_name}/background/background_recover.png'
 
-    vistadream = Pipeline(cfg)
-    vistadream()
+    # vistadream = Pipeline(cfg)
+    # vistadream()
 
     # json_path = os.path.join("results", args.task_name, "SAM", "label.json")
     scene = torch.load(f'../results/{args.task_name}/background/scene.pth')
     check = Check()
-    gaussian_ids = check._render_video(scene, save_dir="./")
+    gaussian_ids = check._render_video(scene, save_dir=f'../results/{args.task_name}/background/')
 
     visible_path = f'../results/{args.task_name}/mask.npy'
     np.save(visible_path, gaussian_ids)
@@ -94,6 +96,6 @@ def main():
     visible_points = check._render_visible(scene, save_dir="./")
     np.save(f"../results/{args.task_name}/visible_points.npy", visible_points)
     
-    
-
+if __name__ == "__main__":
+    main()
 

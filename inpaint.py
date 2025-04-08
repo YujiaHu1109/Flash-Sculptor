@@ -29,7 +29,7 @@ if __name__ == '__main__':
     pipeline.enable_xformers_memory_efficient_attention()
 
     input_dir = os.path.join("./results", args.task_name, "Inpaint")
-    output_dir = os.path.join("./results", args.task_name, "Singlea")
+    output_dir = os.path.join("./results", args.task_name, "Single")
     json_path = os.path.join("./results", args.task_name, "SAM", "label.json")
 
     if not os.path.exists(output_dir):

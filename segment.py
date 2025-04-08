@@ -341,11 +341,8 @@ if __name__ == "__main__":
 
     res = inference_ram(raw_image , ram_model)
 
-    # Currently ", " is better for detecting single tags
-    # while ". " is a little worse in some case
-    print(res[0])
-    # res_tmp = res[0]+" | bird | butterfly | guitar | giraffe | vase | lamp | basketball | pen holder | swan | table"
-    res_tmp = res[0]+" | plant"
+    # res_tmp = res[0]+" | swan"
+    res_tmp = res[0]
     tags=res_tmp.replace(' |', ',')
     # tags = "alarm clock, clock, figurine, footstall, earth, miniature, stand, stool, toy, plant, glasses"
     print(tags)
@@ -382,7 +379,8 @@ if __name__ == "__main__":
     # use NMS to handle overlapped boxes
     print(f"Before NMS: {boxes_filt.shape[0]} boxes")
     nms_idx = torchvision.ops.nms(boxes_filt, scores, iou_threshold).numpy().tolist() # a index list
-    # nms_idx = list(range(17))
+    nms_idx = [0,2]
+    print(nms_idx)
     boxes_filt = boxes_filt[nms_idx]
     # print(boxes_filt.shape)
 
