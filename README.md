@@ -49,8 +49,8 @@ python run.py	--task_name [task_name]
 ### 4. Reconstruct single objects
 First, inpaint the objects by:
 ```bash
-python occlusion.py	--task_name [task_name]
-python inpaint.py	--task_name [task_name]
+python occlusion.py --task_name [task_name]
+python inpaint.py --task_name [task_name]
 ```
 Then, reconstruct the 3D point cloud of each object by:
 ```bash
@@ -69,12 +69,12 @@ python select_points.py	--task_name [task_name]
 ```
 Finally, combine the objects together:
 ```bash
-python combine_objects.py	--task_name [task_name]
+python combine_objects.py --task_name [task_name]
 ```
 
 ### 6. Combine with the background
 ```bash
-python combine_scene.py	--task_name [task_name]
+python combine_scene.py --task_name [task_name]
 ```
 
 ## 🔦 ToDo List
