@@ -32,18 +32,22 @@ python segment.py --config GroundingDINO/groundingdino/config/GroundingDINO_Swin
 ### 2. Reconstruct the background scene
 First, recover the background by running:
 ```bash
+cd Inpaint-Anything
 python background_recover.py --task_name [task_name] --dilate_kernel_size 15 --lama_config ./lama/configs/prediction/default.yaml --lama_ckpt ./pretrained_models/big-lama
+cd ..
 ```
 Then, reconstruct the 3D scene of it using:
 ```bash
 cd VistaDream
 python vistadream.py --task_name [task_name]
+cd ..
 ```
 
 ### 3. Depth estimation
 ```bash
 cd ml-depth-pro
 python run.py --task_name [task_name]
+cd ..
 ```
 
 ### 4. Reconstruct single objects
@@ -62,6 +66,7 @@ python trellis.py --task_name [task_name]
 First, determine the rotation by:
 ```bash
 python rotation.py --task_name [task_name]
+cd ..
 ```
 Then, select points for depth alignment:
 ```bash
