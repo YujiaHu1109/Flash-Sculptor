@@ -1,6 +1,6 @@
 # Flash Sculptor: Modular 3D Worlds from Images
 
-> **Flash Sculptor: Modular 3D Worlds from Images**<br/>Yujia Hu, Songhua Liu, Xingyi Yang, Xinchao Wang
+> **Flash Sculptor: Modular 3D Worlds from Images**<br/>Yujia Hu, Songhua Liu, Xingyi Yang and Xinchao Wang
 
 ![Pipeline](./teaser.jpg)
 
@@ -26,13 +26,13 @@ Or you can simply put your own 2D image as `results/[task_name]/2DImage.png`.
 ### 1. Segment the image
 Run the following command to segment the image and obtain the bounding box, mask and label of each object:
 ```bash
-python segment.py   --config GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py   --ram_checkpoint ram_swin_large_14m.pth   --ram_plus_checkpoint ram_plus_swin_large_14m.pth   --grounded_checkpoint groundingdino_swint_ogc.pth   --sam_checkpoint sam_vit_h_4b8939.pth   --sam_hq_checkpoint sam_hq_vit_h.pth   --box_threshold 0.25   --text_threshold 0.2   --iou_threshold 0.5   --device "cuda" --task_name [task_name]
+python segment.py --config GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py --ram_checkpoint ram_swin_large_14m.pth --ram_plus_checkpoint ram_plus_swin_large_14m.pth --grounded_checkpoint groundingdino_swint_ogc.pth --sam_checkpoint sam_vit_h_4b8939.pth --sam_hq_checkpoint sam_hq_vit_h.pth --box_threshold 0.25 --text_threshold 0.2 --iou_threshold 0.5 --device "cuda" --task_name [task_name]
 ```
 
 ### 2. Reconstruct the background scene
 First, recover the background by running:
 ```bash
-python background_recover.py --task_name [task_name] --dilate_kernel_size 15  --lama_config ./lama/configs/prediction/default.yaml --lama_ckpt ./pretrained_models/big-lama
+python background_recover.py --task_name [task_name] --dilate_kernel_size 15 --lama_config ./lama/configs/prediction/default.yaml --lama_ckpt ./pretrained_models/big-lama
 ```
 Then, reconstruct the 3D scene of it using:
 ```bash
@@ -61,7 +61,7 @@ python trellis.py --task_name [task_name]
 ### 5. Combine the objects
 First, determine the rotation by:
 ```bash
-python rotation.py	--task_name [task_name]
+python rotation.py --task_name [task_name]
 ```
 Then, select points for depth alignment:
 ```bash
