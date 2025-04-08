@@ -43,7 +43,7 @@ python vistadream.py --task_name [task_name]
 ### 3. Depth estimation
 ```bash
 cd ml-depth-pro
-python run.py	--task_name [task_name]
+python run.py --task_name [task_name]
 ```
 
 ### 4. Reconstruct single objects
