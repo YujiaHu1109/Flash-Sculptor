@@ -92,7 +92,7 @@ def main():
 
     check = Check()
     visible_points = check._render_visible(scene, save_dir="./")
-    np.save(f"./results/{args.task_name}/visible_points.npy", visible_points)
+    np.save(f"../results/{args.task_name}/visible_points.npy", visible_points)
     
     
 

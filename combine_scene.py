@@ -362,16 +362,16 @@ def main(args):
     print(scale_scene_x, scale_scene_y)
     scale_scene = (scale_scene_x + scale_scene_y) / 2.0
     scale_scene = scale_scene_x
-    print(scale_scene) # 还需考虑深度
+    print(scale_scene) 
     print("*********")
     print(f"x_range_scene: {x_range}, y_range_scene: {y_range}")
     ## calculate depth
     depth_array = np.load(f"results/{args.task_name}/depth/2DImage_pred.npy")
 
     mask_image = Image.open(f"results/{args.task_name}/background/mask_0.png").convert("L")
-    mask_array = np.array(mask_image)  # 转换为 NumPy 数组
+    mask_array = np.array(mask_image) 
 
-    mask_array = (mask_array > 0).astype(np.uint8)  # 0：非 mask 部分，1：mask 部分
+    mask_array = (mask_array > 0).astype(np.uint8)  
     mask_depth_mean = np.mean(depth_array[mask_array == 1])
 
     non_mask_depth_mean = np.mean(depth_array[mask_array == 0])
@@ -383,16 +383,14 @@ def main(args):
     
     depth_bg = np.load((f"results/{args.task_name}/depth/bg_pred.npy"))
     y_threshold = int(depth_bg.shape[0] * ratio_center_y)
-    larger = np.mean(depth_bg[:y_threshold, :])
-    smaller = np.mean(depth_bg[y_threshold:, :])
-    # print(larger, smaller)
-    final_ratio_y = (ratio_center_y*larger)/(ratio_center_y*larger+(1-ratio_center_y)*smaller) # compensation of the impact of depth on scale
+    upper_part = np.mean(depth_bg[:y_threshold, :])
+    lower_part = np.mean(depth_bg[y_threshold:, :])
+    final_ratio_y = (ratio_center_y*upper_part)/(ratio_center_y*upper_part+(1-ratio_center_y)*lower_part) # compensation of the impact of depth on scale
 
     x_threshold = int(depth_bg.shape[1] * ratio_center_x)
-    larger = np.mean(depth_bg[:, :x_threshold])
-    smaller = np.mean(depth_bg[:, x_threshold:])
-    # print(larger, smaller)
-    final_ratio_x = (ratio_center_x*larger)/(ratio_center_x*larger+(1-ratio_center_x)*smaller)
+    left_part = np.mean(depth_bg[:, :x_threshold])
+    right_part = np.mean(depth_bg[:, x_threshold:])
+    final_ratio_x = (ratio_center_x*left_part)/(ratio_center_x*left_part+(1-ratio_center_x)*right_part)
     print(final_ratio_x, final_ratio_y)
 
     x_min_scene = target_ply['vertex']['x'].min()
@@ -416,8 +414,6 @@ def main(args):
     # center point of the big bbox
     # corresponding ratio of the start point (ratio_center_x/y)
 
-    # x normal, y inverse
-    # x:
     print(ratio_center_x, ratio_center_y) # image中objects的中点ratio
     # scale_scene = 1
     target_x = (x_min + final_ratio_x * x_range) # *scale_scene

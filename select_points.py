@@ -124,7 +124,7 @@ def select(args):
         
 
 
-parser = argparse.ArgumentParser(description="Generate images using Stable Diffusion.")
+parser = argparse.ArgumentParser(description="Select points for depth alignment.")
 parser.add_argument("--task_name", type=str, required=True, help="Task name.")
 
 args = parser.parse_args()
