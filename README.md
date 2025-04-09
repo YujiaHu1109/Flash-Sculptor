@@ -108,7 +108,7 @@ python combine_scene.py --task_name [task_name]
 
 ## 🤔 Limitations
 1. The result of segmentation may need manually adjusted if the segmented objects are not exactly what we want.
-2. The inpainting module may occasionally produce suboptimal results。
+2. The inpainting module may occasionally produce suboptimal results.
 
 ## 💡 Citation
 If you find this repo is helpful, please consider citing:
