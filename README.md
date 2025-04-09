@@ -16,6 +16,11 @@
 > <br>
 
 ![Demo](./assets/show.gif)
+
+<strong>Abstract:</strong> Existing text-to-3D and image-to-3D models often struggle with complex scenes involving multiple objects and intricate interactions. Although some recent attempts have explored such compositional scenarios, they still require an extensive process of optimizing the entire layout, which is highly cumbersome if not infeasible at all. To overcome these challenges, we propose Flash Sculptor in this paper, a simple yet effective framework for compositional 3D scene/object reconstruction from a single image. At the heart of Flash Sculptor lies a divide-and-conquer strategy, which decouples compositional scene reconstruction into a sequence of sub-tasks, including handling the appearance, rotation, scale, and translation of each individual instance. Specifically, for rotation, we introduce a coarse-to-fine scheme that brings the best of both worlds--efficiency and accuracy--while for translation, we develop an outlier-removal-based algorithm that ensures robust and precise parameters in a single step, without any iterative optimization. Extensive experiments demonstrate that Flash Sculptor achieves at least a 3 times speedup over existing compositional 3D methods, while setting new benchmarks in compositional 3D reconstruction performance. 
+
+<strong>Our Pipeline:</strong>
+
 ![Pipeline](./assets/teaser.jpg)
 
 ## 💻 Requirements
@@ -97,15 +102,30 @@ python combine_scene.py --task_name [task_name]
 ```
 
 ## 🔦 ToDo List
-- [ ] Release on arXiv.
+- [x] Release on arXiv.
 - [ ] Improve README and files.
 - [ ] Interactive demos.
 
+## 🤔 Limitations
+1. The result of segmentation may need manually adjusted if the segmented objects are not exactly what we want.
+2. The inpainting module may occasionally produce suboptimal results。
+
+## 💡 Citation
+If you find this repo is helpful, please consider citing:
+```
+@article{hu2025flashsculptormodular3d,
+  title={Flash Sculptor: Modular 3D Worlds from Objects},
+  author={Yujia Hu and Songhua Liu and Xingyi Yang and Xinchao Wang},
+  journal={arXiv preprint arXiv:2504.06178},
+  year={2025}
+}
+```
+
 ## 🔗 Related Projects
 We thank the excellent open - source projects:
-- [Grounded - Segment - Anything](https://github.com/IDEA-Research/Grounded-Segment-Anything.git) for the exceptional automatic segmentation performance;
-- [Inpaint - Anything](https://github.com/geekyutao/Inpaint-Anything.git) for the wonderful image inpainting performance;
+- [Grounded-Segment-Anything](https://github.com/IDEA-Research/Grounded-Segment-Anything.git) for the exceptional automatic segmentation performance;
+- [Inpaint-Anything](https://github.com/geekyutao/Inpaint-Anything.git) for the wonderful image inpainting performance;
 - [VistaDream](https://github.com/WHU-USI3DV/VistaDream.git) for the efficient and fast 3D scene generation;
-- [Depth - Pro](https://github.com/apple/ml-depth-pro) for accurate monocular depth estimation;
+- [Depth-Pro](https://github.com/apple/ml-depth-pro) for accurate monocular depth estimation;
 - [TRELLIS](https://github.com/microsoft/TRELLIS.git) for the high - fidelity and fast single - object 3D generation;
 - [StableDiffusion](https://github.com/CompVis/stable-diffusion) for its powerful image generation and inpainting capabilities.
