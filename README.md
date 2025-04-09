@@ -1,7 +1,19 @@
 # Flash Sculptor: Modular 3D Worlds from Images
 
-> **Flash Sculptor: Modular 3D Worlds from Images**<br/>Yujia Hu, Songhua Liu, Xingyi Yang and Xinchao Wang
+<br>
 
+<a href="https://arxiv.org/abs/2504.06178"><img src="https://img.shields.io/badge/ariXv-2411.15098-A42C25.svg" alt="arXiv"></a>
+
+> **Flash Sculptor: Modular 3D Worlds from Images**
+> <br>
+> Yujia Hu, 
+> [Songhua Liu](http://121.37.94.87/), 
+> [Xingyi Yang](https://adamdad.github.io/), 
+> and 
+> [Xinchao Wang](https://sites.google.com/site/sitexinchaowang/)
+> <br>
+> [Learning and Vision Lab](http://lv-nus.org/), National University of Singapore
+> <br>
 ![Demo](./assets/show.gif)
 ![Pipeline](./assets/teaser.jpg)
 
