@@ -103,7 +103,7 @@ python combine_scene.py --task_name [task_name]
 
 ## 🔦 ToDo List
 - [x] Release on arXiv.
-- [ ] Improve README and files.
+- [ ] Improve codes to support images with resolutions other than (1024, 1024).
 - [ ] Interactive demos.
 
 ## 🤔 Limitations
