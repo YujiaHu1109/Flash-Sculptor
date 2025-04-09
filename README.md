@@ -2,7 +2,8 @@
 
 > **Flash Sculptor: Modular 3D Worlds from Images**<br/>Yujia Hu, Songhua Liu, Xingyi Yang and Xinchao Wang
 
-![Pipeline](./teaser.jpg)
+![Demo](./assets/show.gif)
+![Pipeline](./assets/teaser.jpg)
 
 ## 💻 Requirements
 - Ubuntu 20.04
