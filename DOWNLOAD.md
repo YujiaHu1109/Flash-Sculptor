@@ -25,7 +25,6 @@ Tag2Text (14M): https://huggingface.co/spaces/xinyu1205/Recognize_Anything-Tag2T
 
 ### Download Weights for Vistadream
 To download pretrained models for [Fooocus](https://github.com/lllyasviel/Fooocus), [Depth-Pro](https://github.com/apple/ml-depth-pro), [OneFormer](https://github.com/SHI-Labs/OneFormer) and [SD-LCM](https://github.com/luosiallen/latent-consistency-model) to support Vistadream, run the following command:
-```
 ```bash
 cd Vistadream
 bash download_weights.sh
