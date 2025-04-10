@@ -32,6 +32,9 @@
 ## 🔧 Installation
 For complete installation instructions, please see [INSTALL.md](INSTALL.md).
 
+## ⚙️ Pretrained Models
+Please see [DOWNLOAD.md](DOWNLOAD.md) to download pretrained models.
+
 ## 🔦 Run
 Follow these steps to get a composite 3D scene from a single image:
 
@@ -122,10 +125,10 @@ If you find this repo is helpful, please consider citing:
 ```
 
 ## 🔗 Related Projects
-We thank the excellent open - source projects:
+We thank the excellent open-source projects:
 - [Grounded-Segment-Anything](https://github.com/IDEA-Research/Grounded-Segment-Anything.git) for the exceptional automatic segmentation performance;
 - [Inpaint-Anything](https://github.com/geekyutao/Inpaint-Anything.git) for the wonderful image inpainting performance;
 - [VistaDream](https://github.com/WHU-USI3DV/VistaDream.git) for the efficient and fast 3D scene generation;
 - [Depth-Pro](https://github.com/apple/ml-depth-pro) for accurate monocular depth estimation;
-- [TRELLIS](https://github.com/microsoft/TRELLIS.git) for the high - fidelity and fast single - object 3D generation;
+- [TRELLIS](https://github.com/microsoft/TRELLIS.git) for the high-fidelity and fast single-object 3D generation;
 - [StableDiffusion](https://github.com/CompVis/stable-diffusion) for its powerful image generation and inpainting capabilities.
