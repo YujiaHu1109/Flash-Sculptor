@@ -1,4 +1,4 @@
-## INSTILLATION (Work in Progress)
+## INSTALLTION (Work in Progress)
 
 ### Requirements
 We use an evironment with the following specifications, packages and dependencies:
