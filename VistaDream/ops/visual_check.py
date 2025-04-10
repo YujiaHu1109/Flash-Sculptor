@@ -79,7 +79,6 @@ class Check():
     @torch.no_grad()
     def _render_images(self, scene: Gaussian_Scene, save_dir='./', colorize=True):
 
-        # 创建保存文件夹
         rendered_dir = Path(save_dir) / "rendered"
         rendered_dir.mkdir(parents=True, exist_ok=True)
 
@@ -99,12 +98,9 @@ class Check():
                 intrinsic[0:2] = intrinsic[0:2] * ratio
 
         # render
-        # intrinsic[0][0] = 1500
-        # intrinsic[1][1] = 1500
-        print(intrinsic)
-        # exit(0)
-        print(video_trajs[0])
-        # exit(0)
+
+        # print(intrinsic)
+        # print(video_trajs[0])
         print(f'[INFO] rendering final {nframes} frames...')
         ex_matrix = np.load("transforms.npy")
         video_trajs = [ex_matrix[i] for i in range(ex_matrix.shape[0])]
@@ -114,11 +110,9 @@ class Check():
             rgb = rgb.detach().float().cpu().numpy()
             dpt = dpt.detach().float().cpu().numpy()
             
-            # 保存RGB图像
             rgb_image = (rgb * 255).astype(np.uint8)
             imageio.imwrite(rendered_dir / f"frame_{i:04d}_rgb.png", rgb_image)
             
-            # 处理深度图
             valid_dpts = dpt[dpt > 0.]
             _min = np.percentile(valid_dpts, 1)
             _max = np.percentile(valid_dpts, 99)
@@ -132,41 +126,6 @@ class Check():
             else:
                 dpt_image = (dpt[..., None].repeat(3, axis=-1) * 255).astype(np.uint8)
             
-            # 保存深度图
             imageio.imwrite(rendered_dir / f"dep_frame_{i:04d}_dpt.png", dpt_image)
 
         print(f'[INFO] Rendered frames saved in {rendered_dir}')
-    
-    @torch.no_grad()
-    def _render_visible(self,scene:Gaussian_Scene,save_dir='./'):
-        # render 5times frames
-        nframes = len(scene.frames)*25
-        video_trajs = _generate_trajectory(None,scene,nframes=nframes)
-        H,W,intrinsic = scene.frames[0].H,scene.frames[0].W,deepcopy(scene.frames[0].intrinsic)
-        if H<W:
-            if H>512:
-                ratio = 512/H
-                W,H = int(W*ratio),int(H*ratio)
-                intrinsic[0:2] = intrinsic[0:2]*ratio
-        else:
-            if W>512:
-                ratio = 512/W
-                W,H = int(W*ratio),int(H*ratio)
-                intrinsic[0:2] = intrinsic[0:2]*ratio
-        # render
-        rgbs,dpts = [],[]
-        print(f'[INFO] rendering final video with {nframes} frames...')
-        first_iteration = True
-        for pose in video_trajs:
-            # print(pose)
-            # print(intrinsic)
-            # exit(0)
-            frame = Frame(H=H,W=W,
-                          intrinsic=intrinsic,
-                          extrinsic=pose)
-            rgb,dpt,alpha,gaussian_ids= scene._render_RGBD(frame)
-            # print(type(gaussian_ids))
-            # print(gaussian_ids.shape)
-            visible_points = gaussian_ids.cpu().numpy()
-            # print(visible_points.shape)
-            return visible_points

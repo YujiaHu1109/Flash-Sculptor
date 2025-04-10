@@ -8,15 +8,40 @@ os.environ['ATTN_BACKEND'] = 'xformers'
 import imageio
 import numpy as np
 from PIL import Image
+from plyfile import PlyData, PlyElement
 from trellis.pipelines import TrellisImageTo3DPipeline
 from trellis.utils import render_utils, postprocessing_utils
+
+def rotate_x(coords, angle):
+            """ Rotates coordinates around the X-axis by a given angle (in degrees) """
+            rad = np.radians(angle)
+            rotation_matrix = np.array([[1, 0, 0],
+                                        [0, np.cos(rad), -np.sin(rad)],
+                                        [0, np.sin(rad), np.cos(rad)]])
+            return np.dot(coords, rotation_matrix.T)
+
+def rotate_x180(original_ply, output_ply_path, x_angle=180):
+    ply_data = PlyData.read(original_ply)
+    vertices = ply_data['vertex'].data 
+
+    coords = np.vstack((vertices['x'], vertices['y'], vertices['z'])).T
+
+    # Apply rotations
+    coords_rotated = rotate_x(coords, x_angle)
+
+    new_vertices = vertices.copy()
+    new_vertices['x'] = coords_rotated[:, 0]
+    new_vertices['y'] = coords_rotated[:, 1]
+    new_vertices['z'] = coords_rotated[:, 2]
+        
+    new_ply_data = PlyData([PlyElement.describe(new_vertices, 'vertex')], text=ply_data.text)
+    new_ply_data.write(output_ply_path)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='3D Reconstruction')
     parser.add_argument("--task_name", type=str, required=True, help="Task name")
     args = parser.parse_args()
 
-    # Load a pipeline from a model folder or a Hugging Face model hub.
     pipeline = TrellisImageTo3DPipeline.from_pretrained("JeffreyXiang/TRELLIS-image-large")
     pipeline.cuda()
 
@@ -67,13 +92,13 @@ if __name__ == '__main__':
         # )
         # glb.export("sample.glb")
 
-        # Save Gaussians as PLY files
         file_name, _ = os.path.splitext(image_file)
         output_ply_path = os.path.join(output_folder, f"{file_name}.ply")
 
-        # Save Gaussians as PLY files
         outputs['gaussian'][0].save_ply(output_ply_path)
+        rotate_x180(output_ply_path, output_ply_path) # rotate 180 along x to default view
 
         print(f"Generated PLY file: {output_ply_path}")
+
 
 

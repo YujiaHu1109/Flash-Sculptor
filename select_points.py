@@ -72,9 +72,8 @@ def select(args):
             idx = np.random.choice(filtered_points.shape[0])
             point = filtered_points[idx]
   
-            random_offset = np.random.uniform(-0.1, 0.1, size=2)  # 生成两个浮点数的偏移
+            random_offset = np.random.uniform(-0.1, 0.1, size=2)  
             float_coord = point + random_offset
-            # print(float_coord)
             if (edge_distance <= float_coord[0] < mask.shape[0] - edge_distance) and \
             (edge_distance <= float_coord[1] < mask.shape[1] - edge_distance):
                 selected_coords.add(tuple(float_coord))
@@ -115,11 +114,9 @@ def select(args):
         for i in range(points_cord.shape[0]):
             x, y = points_cord[i, 0], points_cord[i, 1]
             points_cord[i, 2] = calculate_depth(y, x, depth_data)
-            # print(points_cord[i, 2])
             points_cord_save[i, 2] = points_cord[i, 2]
         npy_dir = os.path.join("results", args.task_name, "Single3DN")
         points_cord_save[:, [0, 1]] = points_cord_save[:, [1, 0]]
-        # print(points_cord_save)
         np.save(os.path.join(npy_dir, f'points_cord_{num}.npy'), points_cord_save)
         
 

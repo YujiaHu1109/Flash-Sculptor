@@ -34,9 +34,9 @@ target_dtype = np.dtype([
 def load_and_transform_ply(ply_dir, file_path, scale_factor, translation_vector, rotation_angles=(0, 0, 0)):
     ply_data = PlyData.read(os.path.join(ply_dir, file_path))
     vertices = ply_data['vertex'].data
-    print(vertices.shape)
+    # print(vertices.shape)
     new_vertices = np.zeros(vertices.shape[0], dtype=target_dtype)
-    print(file_path, scale_factor)
+    # print(file_path, scale_factor)
 
     for field in target_dtype.names:
         if field in vertices.dtype.names:
@@ -60,8 +60,6 @@ def combine_meshes_with_properties(mesh_list):
     total = 0
     for i in range (len(mesh_list)):
         total += mesh_list[i].shape[0]
-    
-    # print(total)
 
     new_vertices = np.zeros(total, dtype=target_dtype)
     current_index = 0
@@ -98,7 +96,6 @@ def calculate_visible(ply_dir, ply_files, index):
 
     sorted_pt_map = np.sort(pt_map)
     front_surface_pcd = pcd.select_by_index(sorted_pt_map)
-    print(len(front_surface_pcd.points))
 
     points = np.asarray(front_surface_pcd.points)
     indices = np.array(sorted_pt_map)
@@ -124,8 +121,8 @@ def remove_outliers_mad(z_moves, threshold=3.0):
     mad = np.median(abs_deviations)
     mad_normalized = 1.4826 * mad
     z_scores = abs_deviations / mad_normalized
-    print("z_scores shape:", z_scores.shape)
-    print("z_moves shape:", z_moves.shape)
+    # print("z_scores shape:", z_scores.shape)
+    # print("z_moves shape:", z_moves.shape)
     if not isinstance(threshold, (int, float)):
         raise TypeError("threshold must be a numeric type (int or float)")
     inlier_indices = np.where(z_scores < threshold)[0]
@@ -173,7 +170,7 @@ def main():
         y_min_out = min(y_min_out, box[0][1]) 
         x_max_out = max(x_max_out, box[0][2]) 
         y_max_out = max(y_max_out, box[0][3])
-        print(i, xx, yy)
+        # print(i, xx, yy)
         xym = max(xx, yy)
         scale_pre.append(xym)
 
@@ -220,10 +217,10 @@ def main():
     print(f"scale factor: {scale_factors}") # final
 
     min_values, max_values = load_ply(ply_dir, ply_files, index_max)
-    print((max_values[0]-min_values[0]), (max_values[1]-min_values[1]))
+    # print((max_values[0]-min_values[0]), (max_values[1]-min_values[1]))
     mesh_scale_max = max((max_values[0]-min_values[0]), (max_values[1]-min_values[1]))
-    print(mesh_scale_max * scale_factors_nd[index_max])
-    print(scale_factors[index_max])
+    # print(mesh_scale_max * scale_factors_nd[index_max])
+    # print(scale_factors[index_max])
 
     max_axis_scale = (mesh_scale_max * scale_factors[index_max]/(scale_pre[index_max]/1024))
     print(f"max_axis_scale: {max_axis_scale}")
@@ -232,7 +229,7 @@ def main():
     translations = np.zeros((num_objects, 3)) 
     translation_path = os.path.join("results", args.task_name, "SAM", "translation_2DImage.npy")
     translations_ori = np.load(translation_path)
-    print(translations_ori)
+    # print(translations_ori)
 
     for i in range(num_objects):
         num = numbers[i]
@@ -242,7 +239,7 @@ def main():
         x_target = x_target - 0.5
         y_target = translations_ori[num][1]
         y_target = 0.5 - y_target
-        z_target = 1-translations_ori[num][2] 
+        z_target = translations_ori[num][2] 
         z_target = 0.5 - z_target
         x_target = x_target * max_axis_scale 
         y_target = y_target * max_axis_scale 
@@ -284,14 +281,13 @@ def main():
             z_oris.append(z_ori)
             if dis < 1:
                 indexs.append(index)
-                # z_target = 1-points[j][2] 
                 z_target = points[j][2]
                 z_targets.append(z_target)
                 z_target = (0.5 - z_target) * max_axis_scale * axis_scale_z
                 z_move = z_target - z_ori * scale_factor
                 z_moves.append(z_move)
             
-        print(np.mean(z_moves), np.std(z_moves))
+        # print(np.mean(z_moves), np.std(z_moves))
 
         filtered_z_moves, outlier_indices = remove_outliers_mad(np.array(z_moves))
         final_z_move = np.mean(filtered_z_moves)

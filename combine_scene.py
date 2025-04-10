@@ -292,7 +292,7 @@ def main(args):
     # 0. obtain the points of input view of the bg 3D model #
     #########################################################
     gaussian_ids = np.load(f"./results/{args.task_name}/visible_points.npy")
-    print(gaussian_ids.shape)
+    # print(gaussian_ids.shape)
 
     visible_points = extract_points_by_ids(target_ply, gaussian_ids)
     # print(visible_points.shape)
@@ -342,7 +342,7 @@ def main(args):
     with open(json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     bboxes = [item['box'] for item in data['mask'] if 'box' in item]
-    print(bboxes)
+    # print(bboxes)
 
     big_bbox = get_bounding_box(bboxes)
    
@@ -450,8 +450,8 @@ def main(args):
     z_moves = z_targets - z_oris
 
     filtered_z_moves, outlier_indices = remove_outliers_mad(z_moves)
-    print(len(filtered_z_moves))
-    print(np.mean(filtered_z_moves))
+    # print(len(filtered_z_moves))
+    # print(np.mean(filtered_z_moves))
     translation_z = np.mean(filtered_z_moves)
     
 
