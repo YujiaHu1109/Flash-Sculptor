@@ -1,4 +1,4 @@
-## INSTALLITION (Work in Progress)
+## INSTALLATION
 
 ### Requirements
 We use an evironment with the following specifications, packages and dependencies:
@@ -15,22 +15,36 @@ conda env create -f environment.yaml
 conda activate flashsculptor
 ```
 
+- Install Grounded-SAM
+```bash
+export AM_I_DOCKER=False
+export BUILD_WITH_CUDA=True
+export CUDA_HOME=/path/to/cuda-12.1/
+python -m pip install -e segment_anything
+pip install --no-build-isolation -e GroundingDINO
+git submodule update --init --recursive
+cd grounded-sam-osx && bash install.sh
+git clone https://github.com/xinyu1205/recognize-anything.git
+pip install -r ./recognize-anything/requirements.txt
+pip install -e ./recognize-anything/
+```
+
 - Install the following packages based on your environment
 
 ```bash
 pip install xformers==0.0.27.post2 --index-url https://download.pytorch.org/whl/cu121
 pip install spconv-cu120
+pip install kaolin -f https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.4.0_cu121.html
 ```
 
-- Install the following packages 
+- Install the following required packages 
 
 ```bash
 pip install git+https://github.com/EasternJournalist/utils3d
-pip install kaolin -f https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.4.0_cu121.html
 mkdir -p /tmp/extensions
-git clone https://github.com/NVlabs/nvdiffrast.git 
+git clone https://github.com/NVlabs/nvdiffrast.git /tmp/extensions/nvdiffrast
 pip install /tmp/extensions/nvdiffrast
-git clone https://github.com/autonomousvision/mip-splatting.git
+git clone https://github.com/autonomousvision/mip-splatting.git /tmp/extensions/mip-splatting
 pip install /tmp/extensions/mip-splatting/submodules/diff-gaussian-rasterization/
 ```
 
