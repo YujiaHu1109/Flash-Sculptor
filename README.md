@@ -2,7 +2,7 @@
 
 <br>
 
-<a href="https://arxiv.org/abs/2504.06178"><img src="https://img.shields.io/badge/ariXv-2411.15098-A42C25.svg" alt="arXiv"></a>
+<a href="https://arxiv.org/abs/2504.06178"><img src="https://img.shields.io/badge/ariXv-2504.06178-A42C25.svg" alt="arXiv"></a>
 
 > **Flash Sculptor: Modular 3D Worlds from Images**
 > <br>
