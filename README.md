@@ -104,6 +104,36 @@ python combine_objects.py --task_name [task_name]
 python combine_scene.py --task_name [task_name]
 ```
 
+## 🔎 Interactive Viewer
+To view the combined 3D scene with an interactive viewer:
+Replace `Point_Cloud_Path` with the path of your 3D scene point cloud.
+
+### Windows
+```bash 
+cd viewer_windows/bin
+SIBR_gaussianViewer_app.exe -m [Point_Cloud_Path]
+```
+
+### Ubuntu
+First install these dependencies
+```
+# Dependencies
+sudo apt install -y libglew-dev libassimp-dev libboost-all-dev libgtk-3-dev libopencv-dev libglfw3-dev libavdevice-dev libavcodec-dev libeigen3-dev libxxf86vm-dev libembree-dev
+# Project setup
+cd SIBR_viewers
+cmake -Bbuild . -DCMAKE_BUILD_TYPE=Release # add -G Ninja to build faster
+cmake --build build -j24 --target install
+cd ..
+```
+To launch the viewer:
+```
+./<SIBR_install_dir>/bin/SIBR_gaussianViewer_app -m [Point_Cloud_Path]
+```
+
+### Navigation in SIBR Viewer
+The SIBR interface provides several methods of navigating the scene. By default, you will be started with an FPS navigator, which you can control with W, A, S, D, Q, E for camera translation and I, K, J, L, U, O for rotation. Alternatively, you may want to use a Trackball-style navigator (select from the floating menu). You can also snap to a camera from the data set with the Snap to button or find the closest camera with Snap to closest. The floating menues also allow you to change the navigation speed. You can use the Scaling Modifier to control the size of the displayed Gaussians, or show the initial point cloud.
+
+
 ## 🔦 ToDo List
 - [x] Release on arXiv.
 - [ ] Improve codes to support images with resolutions other than (1024, 1024).
@@ -132,3 +162,4 @@ We thank the excellent open-source projects:
 - [Depth-Pro](https://github.com/apple/ml-depth-pro) for accurate monocular depth estimation;
 - [TRELLIS](https://github.com/microsoft/TRELLIS.git) for the high-fidelity and fast single-object 3D generation;
 - [StableDiffusion](https://github.com/CompVis/stable-diffusion) for its powerful image generation and inpainting capabilities.
+- [3D Gaussian Splatting](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/) for its groundbreaking approach to fast and high-quality 3D scene rendering and SIBR real-time viewer and [DreamScene360](https://github.com/ShijieZhou-UCLA/DreamScene360.git) for its integration of SIBR viewer.
