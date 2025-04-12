@@ -22,7 +22,7 @@ export BUILD_WITH_CUDA=True
 export CUDA_HOME=/path/to/cuda-12.1/
 python -m pip install -e segment_anything
 pip install --no-build-isolation -e GroundingDINO
-git submodule update --init --recursive
+git clone https://github.com/linjing7/grounded-sam-osx.git
 cd grounded-sam-osx && bash install.sh
 git clone https://github.com/xinyu1205/recognize-anything.git
 pip install -r ./recognize-anything/requirements.txt
