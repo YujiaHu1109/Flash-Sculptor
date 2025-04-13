@@ -66,7 +66,7 @@ class GS_Train_Tool():
         ]) 
 
     def _render(self,frame):
-        rgb,dpt,alpha = self.GS._render_RGBD(frame)
+        rgb,dpt,alpha,_ = self.GS._render_RGBD(frame)
         return rgb,dpt,alpha
     
     def _to_cuda(self,tensor):
