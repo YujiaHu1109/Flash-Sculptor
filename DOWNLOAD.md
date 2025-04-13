@@ -29,3 +29,5 @@ To download pretrained models for [Fooocus](https://github.com/lllyasviel/Fooocu
 cd Vistadream
 bash download_weights.sh
 ```
+### Download Weights for Background-Inpainting
+Download ```best.ckpt``` from [here](https://drive.google.com/drive/folders/1EMqEi4hN5g9SkBRVcJg9FHutzYKthfte) and place it under ```Inpaint-Anything/pretrained_models/big-lama/models/```.
